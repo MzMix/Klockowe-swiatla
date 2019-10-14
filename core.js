@@ -7,6 +7,13 @@ function preload() {
         alert("Wystąpił bład! Nastąpi przekierowanie do strony głównej!");
         window.location.href = "https://mzmix.github.io/";
     }, "json")
+
+    settings.lightBulbImg = loadImage("./resources/lamp.png", () => {
+        console.log("Grafika załadowana pomyślnie!");
+    }, () => {
+        alert("Wystąpił bład! Nastąpi przekierowanie do strony głównej!");
+        window.location.href = "https://mzmix.github.io/";
+    })
 }
 
 Number.prototype.between = function (a, b) {
@@ -235,25 +242,45 @@ class Segment {
         this.fill = settings.squareFill;
         this.round = settings.squareCurvature;
         this.textColor = settings.squareTextColor;
+        this.textStroke = settings.squareTextStrokeColor;
+        this.textStrokeWeight = settings.squareTextWeight;
+        this.textSize = settings.squareTextSize;
+        this.img = false
+        this.tintColor = undefined;
     }
 
     display() {
-        push();
-        translate(this.pos.x, this.pos.y);
-        stroke(this.stroke);
-        fill(this.fill);
 
-        rect(0, 0, settings.squareSize, settings.squareSize, this.round)
+        if (this.img) {
+            push();
+            translate(this.pos.x, this.pos.y);
 
-        if (this.txt) {
-            textSize(15);
-            fill(this.textColor);
-            textAlign(CENTER, CENTER)
-            strokeWeight(0);
-            text(this.txt, 2, 2, settings.squareSize, settings.squareSize);
+            stroke(this.stroke);
+            fill(this.fill);
+            rect(0, 0, settings.squareSize, settings.squareSize, this.round)
+
+            if (this.tintColor) tint(this.tintColor);
+            image(settings.lightBulbImg, 0, 0, settings.squareSize, settings.squareSize);
+
+            pop();
+        } else {
+            push();
+            translate(this.pos.x, this.pos.y);
+            stroke(this.stroke);
+            fill(this.fill);
+
+            rect(0, 0, settings.squareSize, settings.squareSize, this.round)
+
+            if (this.txt) {
+                textSize(this.textSize);
+                fill(this.textColor);
+                stroke(this.textStroke);
+                textAlign(CENTER, CENTER)
+                strokeWeight(this.textStrokeWeight);
+                text(this.txt, 2, 2, settings.squareSize, settings.squareSize);
+            }
+            pop();
         }
-
-        pop();
     }
 
     mousePointing() {
@@ -269,6 +296,12 @@ class Index extends Segment {
         this.fill = settings.indexFill;
         this.round = settings.indexCurvature;
 
+        this.textStrokeWeight = settings.indexTextWeight;
+        this.textSize = settings.indexTextSize;
+
+        this.textStroke = settings.indexTextStrokeColor;
+        this.textStrokeWeight = settings.indexTextWeight;
+
         this.txt = this.iteratorIndex.x;
         if (this.iteratorIndex.x == 0 || this.iteratorIndex.x == 11) this.txt = this.iteratorIndex.y;
     }
@@ -278,7 +311,7 @@ class Index extends Segment {
     }
 }
 
-$('modal').on('show.bs.modal', function () {
+$('#modal').on('show.bs.modal', function () {
     userInterface.modalOpened = true;
 })
 

@@ -15,8 +15,8 @@
                 ["action.saveImg()"]
             ],
             "Dostosowywanie": [
-                ["Zestawy kolorów"],
-                ["action.showModal('changeColorSet')"]
+                ["TMP-BTN"],
+                ["fxn"]
             ]
         }
     }],

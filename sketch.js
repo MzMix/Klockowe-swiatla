@@ -1,4 +1,30 @@
 function addMethodsToObjects() {
+
+    Segment.prototype.state = 0;
+
+    Segment.prototype.colorSegment = function () {
+
+        if (settings.colorSchemes[settings.activeColorScheme][this.state] == settings.wallColor) {
+            this.fill = settings.wallColor;
+            this.img = false;
+        } else if (settings.colorSchemes[settings.activeColorScheme][this.state] == settings.squareFill) {
+            this.fill = settings.squareFill;
+            this.img = false;
+        } else {
+            this.fill = settings.squareFill;
+            this.tintColor = settings.colorSchemes[settings.activeColorScheme][this.state];
+            this.img = true
+        }
+
+        this.state++;
+        this.state %= 5;
+    }
+
+    Segment.prototype.deployRays = function () {
+
+
+    }
+
     Segment.prototype.hideTxt = function () {
 
         if (this.textColor === this.basicTxtColor) {
@@ -95,7 +121,10 @@ function addMethodsToObjects() {
 
     }
 
-    settings.addValues({})
+    settings.addValues({
+        wallColor: "black",
+        activeColorScheme: 0
+    })
 
     userInterface.executeQueue = {
         displayAxis: () => {}
@@ -116,8 +145,7 @@ function addMethodsToObjects() {
     }
 
     settings.colorSchemes = [
-        ['green', 'deepskyblue', 'purple', 'khaki', 'red', 'greenyellow', 'black', 'white', 'saddlebrown', 'darkorange', '#C0C0C0'],
-        ['green', 'deepskyblue', 'purple', 'yellow', 'red', 'greenyellow', 'black', 'white', 'blue', 'darkorange', '#C0C0C0']
+        [settings.wallColor, 'green', 'yellow', 'red', settings.squareFill],
     ];
 
 }
