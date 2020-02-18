@@ -2,8 +2,8 @@ class PresetSettings {
     constructor() {
         this.squareSize = 80;
         this.squareSpacer = 10;
-        this.squaresBySideH = 4;
-        this.squaresBySideW = 4;
+        this.squaresBySideH = 5;
+        this.squaresBySideW = 5;
 
         this.squareCurvature = 1;
 
