@@ -218,7 +218,7 @@ function setup() {
     for (let segment of userInterface.board) {
         segment.display();
     }
-    // frameRate(8);
+    // frameRate(8);    
 }
 
 function draw() {
