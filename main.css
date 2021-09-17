@@ -70,35 +70,36 @@ nav {
 	width: 25% !important;
 	display: inline-block;
 	margin: 2%;
+}
 
-	.colorContainerSquare:hover {
-		cursor: pointer;
-		opacity: 0.9;
-	}
+.colorContainerSquare:hover {
+	cursor: pointer;
+	opacity: 0.9;
+}
 
-	.customColorPickerDiv {
-		margin: 10px;
-		padding-top: 10px;
-		display: inline-block;
-		vertical-align: middle;
-	}
+.customColorPickerDiv {
+	margin: 10px;
+	padding-top: 10px;
+	display: inline-block;
+	vertical-align: middle;
+}
 
-	.colorPicker {
-		display: inline-block;
-		vertical-align: middle;
-	}
+.colorPicker {
+	display: inline-block;
+	vertical-align: middle;
+}
 
-	#colorDescription {
-		padding-top: 10%;
-		width: 100%;
-		height: 100%;
-	}
+#colorDescription {
+	padding-top: 10%;
+	width: 100%;
+	height: 100%;
+}
 
-	.colorDecriptionColorBox {
-		width: 25px;
-		height: 25px;
-		display: inline-block;
-		vertical-align: middle;
-		border: solid 1px black;
-		margin: 1%;
-	}
+.colorDecriptionColorBox {
+	width: 25px;
+	height: 25px;
+	display: inline-block;
+	vertical-align: middle;
+	border: solid 1px black;
+	margin: 1%;
+}
